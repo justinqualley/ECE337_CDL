@@ -49,7 +49,7 @@ module data_buffer (
     if (n_rst == 0) begin
       buffer <= 0;
     end else begin
-      nxt_buffer <= buffer;
+      buffer <= nxt_buffer;
     end
   end
 
@@ -62,15 +62,12 @@ module data_buffer (
     //pop
     if(get_tx_packet_data) begin
       tx_packet_data = 0;
-      generate
-        genvar i;
-        for(i=0; i < 64; i = i+1)
-          if(get_tx_packet_data & buffer_occupancy == i+1)
-            tx_packet_data = buffer[((i+1)*8)-1 : i*8];
-      endgenerate 
     end
 
-
+    for(int i=0; i < 64; i = i+1) begin
+      if(get_tx_packet_data & buffer_occupancy == i+1)
+        tx_packet_data = buffer[i*8 +: 8];
+    end
   end
 
 
