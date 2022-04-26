@@ -1,0 +1,91 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ecegrid/a/mg56/ECE337_CDL
+T_opt
+!s110 1650936893
+VeC1YnXe[`H]LjMjhoaT3G1
+04 12 4 work tb_ahb_slave fast 0
+=10-80000208fe80-62674c3d-34fce-7528
+o-quiet -auto_acc_if_foreign -work source_work -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -suppress 12110 +acc
+tCvgOpt 0
+n@_opt
+OE;O;10.7a;67
+vahb_slave
+Z1 DXx6 sv_std 3 std 0 22 >9az<^>2ff9DAl3OFGaAf1
+!s110 1650936032
+!i10b 1
+!s100 3j]0R?DkRI>93fDF0IXoH1
+IM65b9TaU]]2]zC=W6:2QW2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 ahb_slave_sv_unit
+S1
+R0
+w1650936025
+8/home/ecegrid/a/mg56/ECE337_CDL/source/ahb_slave.sv
+F/home/ecegrid/a/mg56/ECE337_CDL/source/ahb_slave.sv
+L0 1
+Z3 OE;L;10.7a;67
+r1
+!s85 0
+31
+!s108 1650936032.000000
+!s107 /home/ecegrid/a/mg56/ECE337_CDL/source/ahb_slave.sv|
+!s90 -reportprogress|300|-sv|-work|source_work|/home/ecegrid/a/mg56/ECE337_CDL/source/ahb_slave.sv|
+!i113 0
+Z4 o-sv -work source_work
+Z5 tCoverage 63 CoverExcludeDefault 1 CoverOpt 1 CoverShortCircuit 0 CvgOpt 0
+vtb_ahb_lite_slave_cdl
+R1
+!s110 1650926149
+!i10b 1
+!s100 7QAI:l>iZ5UUd0cR8<bRB2
+Ik`PE03DdgPbk8D7GFJdL?3
+R2
+Z6 !s105 tb_ahb_slave_sv_unit
+S1
+R0
+w1650926077
+8source/tb_ahb_slave.sv
+Fsource/tb_ahb_slave.sv
+Z7 L0 11
+R3
+r1
+!s85 0
+31
+!s108 1650926149.000000
+!s107 source/tb_ahb_slave.sv|
+!s90 -sv|-work|source_work|source/tb_ahb_slave.sv|
+!i113 0
+R4
+R5
+vtb_ahb_slave
+R1
+!s110 1650936886
+!i10b 1
+!s100 PR;aeol3WQHLE04e:[UIh1
+I2<QaEEo6a]56M8Ph`K`GA1
+R2
+R6
+S1
+R0
+w1650936878
+8/home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_slave.sv
+F/home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_slave.sv
+R7
+R3
+r1
+!s85 0
+31
+!s108 1650936886.000000
+!s107 /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_slave.sv|
+!s90 -reportprogress|300|-sv|-work|source_work|/home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_slave.sv|
+!i113 0
+R4
+R5
