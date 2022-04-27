@@ -19,13 +19,14 @@ module tx(
   output logic dminus_out
 );
 
-  flex_counter bruh #(.NUM_CNT_BITS())
+  logic rollover_flag;
+  flex_counter bruh
   (
     .clk(),
     .n_rst(),
     .clear(),
     .count_enable(),
-    .rollover_val(),
+    .rollover_val(8),
     .count_out(),
     .rollover_flag()
   );
