@@ -6,6 +6,7 @@
 // Version:     1.0  Initial Design Entry
 // Description: data buffer test bench
 
+`timescale 1ns / 10ps
 
 module tb_data_buffer();
 // Timing related constants
@@ -105,16 +106,26 @@ begin
   end
 
   if(tb_expected_tx_packet_data == tb_tx_packet_data) begin // Check passed
-    $info("Correct 'tb_buffer_occupancy' output during %s test case", tb_test_case);
+    $info("Correct 'tb_tx_packet_data' output during %s test case", tb_test_case);
   end
   else begin // Check failed
     tb_mismatch = 1'b1;
-    $error("Incorrect 'tb_buffer_occupancy' output during %s test case", tb_test_case);
+    $error("Incorrect 'tb_tx_packet_data' output during %s test case", tb_test_case);
   end
 
   // Wait some small amount of time so check pulse timing is visible on waves
   #(0.1);
   tb_check =1'b0;
+end
+endtask
+
+// Tasl to clear/initialize all inputs
+task init_inputs;
+begin
+  tb_tx_data = 0;
+  tb_store_tx_data = 0;
+  tb_get_tx_packet_data = 0;
+  tb_clear = 0;
 end
 endtask
 
@@ -126,6 +137,23 @@ begin
 end
 endtask
 
+task push;
+  input int data;
+begin
+  tb_tx_data = data;
+  tb_store_tx_data = 1;
+  #(CLK_PERIOD)
+  tb_store_tx_data = 0;
+end
+endtask
+
+task pop;
+begin
+  tb_get_tx_packet_data = 1;
+  #(CLK_PERIOD)
+  tb_get_tx_packet_data = 0;
+end
+endtask
 
 initial begin
   // Initialize Test Case Navigation Signals
@@ -145,8 +173,8 @@ initial begin
   // Wait some time before starting first test case
   #(0.1);
 
-  // Clear the bus model
-  reset_model();
+  // Reset dut
+  reset_dut();
 
   //*****************************************************************************
   // Power-on-Reset Test Case
@@ -156,12 +184,187 @@ initial begin
   tb_test_case_num = tb_test_case_num + 1;
   
   // Reset the DUT
-  init_buf_side();
+  init_inputs();
+  init_expected_outs();
   #(CLK_PERIOD);
   reset_dut();
 
-  
+  //*****************************************************************************
+  // AHB Fill 1 Byte
+  //*****************************************************************************
+  tb_test_case     = "AHB Fill 1 Byte";
+  tb_test_case_num = tb_test_case_num + 1;
+
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+  #(CLK_PERIOD);
+
+  // Setup expected outputs
+  init_expected_outs();
+  tb_expected_buffer_occupancy = 1;
+  tb_expected_tx_packet_data = 8'b0;
+
+  // Setup inputs
+  init_inputs();
+
+  // Push
+  push(8'b11111111);
+
+  // Check
+  check_outputs();
+  #(CLK_PERIOD)
+
+
+  //*****************************************************************************
+  // AHB Fill 32 Bytes
+  //*****************************************************************************
+  tb_test_case     = "AHB Fill 32 Bytes";
+  tb_test_case_num = tb_test_case_num + 1;
+
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+  #(CLK_PERIOD);
+
+  // Setup expected outputs
+  init_expected_outs();
+  tb_expected_buffer_occupancy = 32;
+  tb_expected_tx_packet_data = 8'b0;
+
+  // Setup inputs
+  init_inputs();
+
+  // Push
+  for(int cnt = 0; cnt < 32; cnt++)
+    push(8'b11111111);
+
+  // Check
+  check_outputs();
+  #(CLK_PERIOD)
+
+
+  //*****************************************************************************
+  // AHB Fill 64 Bytes
+  //*****************************************************************************
+  tb_test_case     = "AHB Fill 64 Bytes";
+  tb_test_case_num = tb_test_case_num + 1;
+
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+  #(CLK_PERIOD);
+
+  // Setup expected outputs
+  init_expected_outs();
+  tb_expected_buffer_occupancy = 64;
+  tb_expected_tx_packet_data = 8'b0;
+
+  // Setup inputs
+  init_inputs();
+
+  // Push
+  for(int cnt = 0; cnt < 64; cnt++)
+    push(8'b11111111);
+
+  // Check
+  check_outputs();
+  #(CLK_PERIOD)
+
+
+  //*****************************************************************************
+  // TX Drain 1 Byte
+  //*****************************************************************************
+  tb_test_case     = "TX Drain 1 Byte";
+  tb_test_case_num = tb_test_case_num + 1;
+
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+  #(CLK_PERIOD);
+
+  // Setup expected outputs
+  init_expected_outs();
+  tb_expected_buffer_occupancy = 0;
+  tb_expected_tx_packet_data = 8'b11111111;
+
+  // Setup inputs
+  init_inputs();
+
+  // Push
+  push(8'b11111111);
+
+  // Pop
+  pop();
+
+  // Check
+  check_outputs();
+  #(CLK_PERIOD)
+
+
+  //*****************************************************************************
+  // TX Drain 32 Byte
+  //*****************************************************************************
+  tb_test_case     = "TX Drain 32 Byte";
+  tb_test_case_num = tb_test_case_num + 1;
+
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+  #(CLK_PERIOD);
+
+  // Setup expected outputs
+  init_expected_outs();
+  tb_expected_buffer_occupancy = 0;
+  tb_expected_tx_packet_data = 8'b11111111;
+
+  // Setup inputs
+  init_inputs();
+
+  // Push
+  for(int cnt = 0; cnt < 31; cnt++)
+    push(cnt);
+  push(8'b11111111);
+
+  // Pop
+  for(int cnt = 0; cnt < 32; cnt++)
+    pop();
+
+  // Check
+  check_outputs();
+  #(CLK_PERIOD)
+
+
+  //*****************************************************************************
+  // TX Drain 64 Byte
+  //*****************************************************************************
+  tb_test_case     = "TX Drain 64 Byte";
+  tb_test_case_num = tb_test_case_num + 1;
+
+  // Reset the DUT to isolate from prior test case
+  reset_dut();
+  #(CLK_PERIOD);
+
+  // Setup expected outputs
+  init_expected_outs();
+  tb_expected_buffer_occupancy = 0;
+  tb_expected_tx_packet_data = 8'b11111111;
+
+  // Setup inputs
+  init_inputs();
+
+  // Push
+  for(int cnt = 0; cnt < 63; cnt++)
+    push(cnt);
+  push(8'b11111111);
+
+  // Pop
+  for(int cnt = 0; cnt < 64; cnt++)
+    pop();
+
+  // Check
+  check_outputs();
+  #(CLK_PERIOD)
+
+
   $stop;
 end
+
+
 
 endmodule

@@ -19,6 +19,7 @@ module data_buffer (
 
   // buffer occupancy counter
   logic [6:0] nxt_buffer_occupancy;
+  logic [7:0] nxt_tx_packet_data;
   
   always_ff @(posedge clk, negedge n_rst) begin
     if (n_rst == 0) begin
@@ -30,10 +31,12 @@ module data_buffer (
 
   always_comb begin
     nxt_buffer_occupancy = buffer_occupancy;
-    if(store_tx_data & buffer_occupancy > 0) begin 
+    if(get_tx_packet_data & buffer_occupancy > 0) begin 
       nxt_buffer_occupancy = buffer_occupancy - 1;
-    end else if(get_tx_packet_data & buffer_occupancy < 64) begin
+    end else if(store_tx_data & buffer_occupancy < 64) begin
       nxt_buffer_occupancy = buffer_occupancy + 1;
+    end else if(buffer_occupancy == 64 & store_tx_data) begin // if buffer full and push new byte, reset buffer occupancy to 1
+      nxt_buffer_occupancy = 1;
     end
     if(clear) begin
       nxt_buffer_occupancy = 0;
@@ -48,25 +51,27 @@ module data_buffer (
   always_ff @(posedge clk, negedge n_rst) begin
     if (n_rst == 0) begin
       buffer <= 0;
+      tx_packet_data <= 0;
     end else begin
       buffer <= nxt_buffer;
+      tx_packet_data <= nxt_tx_packet_data;
     end
   end
 
   always_comb begin
+    nxt_buffer = buffer;
+
     // push
     if(store_tx_data) begin
-      nxt_buffer = {buffer[503:0], tx_data}; // Move whole buffer over 1 byte
+      nxt_buffer = {buffer[503:0], tx_data[7:0]}; // Move whole buffer over 1 byte
     end
 
     //pop
-    if(get_tx_packet_data) begin
-      tx_packet_data = 0;
-    end
-
+    // Very likely that this doesnt actually do anything, make sure to check later
+    nxt_tx_packet_data = tx_packet_data;
     for(int i=0; i < 64; i = i+1) begin
       if(get_tx_packet_data & buffer_occupancy == i+1)
-        tx_packet_data = buffer[i*8 +: 8];
+        nxt_tx_packet_data = buffer[i*8 +: 8];
     end
   end
 
