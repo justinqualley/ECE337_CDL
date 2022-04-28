@@ -9,9 +9,9 @@ source/
 ahb_tx_cdl.sv - top level RTL code for entire design
 ahb_slave.sv - handles AHB-Lite protocol to send data and interface with the USB TX
 tx.sv - handles sending any of the basic packet types sent from an endpoint to the host during transfers
-control_logic.sv -
+control_logic.sv - handles the logic of when to send a packet
 data_buffer.sv - 64 Byte Buffer to store data to be sent
-encoder.sv -
+encoder.sv - handles USB protocol to send the data
 flex_counter.sv - counter module that can be extended to any number of bits
 flex_pts_sr.sv - parallel to Serial shift register that can be extended to any number of bits
 tb_ahb_slave.sv - testbench for ahb_slave.sv
