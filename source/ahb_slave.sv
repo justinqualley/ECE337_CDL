@@ -111,6 +111,19 @@ always_comb begin
         hresp = 1'b0;
     end
 end
+
+logic tx_transfer_active_trigger;
+logic prev_tx_transfer_active;
+
+always_ff @(posedge clk or negedge n_rst) begin
+  if(1'b0 == n_rst)
+    prev_tx_transfer_active <= 1'b0;
+  else
+    prev_tx_transfer_active <= tx_transfer_active;
+end
+
+assign tx_transfer_active_trigger = (~tx_transfer_active) & prev_tx_transfer_active;
+
 always_comb begin
     dmode = tx_transfer_active;
     hrdata = '0;
@@ -118,7 +131,7 @@ always_comb begin
     next_mem[5]  = (tx_transfer_active == 1'b1) ? 8'b10 : mem[5];        //Status Register
     next_mem[7]  = (tx_error == 1'b1)           ? 8'b1  : mem[7];        //Error Register
     next_mem[8]  = buffer_occupancy;
-    next_mem[12] = (tx_transfer_active == 1'b0) ? '0    : mem[12];       //TX Control Register //check if clearing to 0 works properly
+    next_mem[12] = (tx_transfer_active_trigger) ? '0    : mem[12];       //TX Control Register //check if clearing to 0 works properly
     next_mem[13] = (buffer_occupancy == '0)     ? '0    : mem[13];       //Flush Register
     //Outputs
     clear  = (mem[13] == 8'd1) ? 1'b1 : 1'b0; 

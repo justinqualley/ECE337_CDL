@@ -364,8 +364,12 @@ initial begin
   enqueue_transaction(1'b1, 1'b1, 8'd0, '{8'd10}, BURST_SINGLE, 1'b0, 2'd0);
   //Check for correct behavior
   execute_transactions(1);
-  check_outputs();
-  #(CLK_PERIOD)
+  #(3*CLK_PERIOD)
+  // Enqueue the needed transactions
+  enqueue_transaction(1'b1, 1'b1, 8'd12, '{8'd1}, BURST_SINGLE, 1'b0, 2'd0);
+  //Check for correct behavior
+  execute_transactions(1);
+  #(100*CLK_PERIOD)
   // Update Navigation Info
   tb_test_case     = "Un-alligned Write Transfer 1 Byte";
   tb_test_case_num = tb_test_case_num + 1;
