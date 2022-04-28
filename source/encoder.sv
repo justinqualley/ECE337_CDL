@@ -94,7 +94,7 @@ module encoder (
     endcase
 
     if(encode == 1)
-      shift_data = 8'b00000001; // SYNC_BYTE
+      shift_data = 8'b10000000; // SYNC_BYTE
     if(encode == 2)
       shift_data = pid;
     if(encode == 3)
@@ -104,5 +104,6 @@ module encoder (
       is_eop = 1;
   end
   
+  assign end_packet = (state == `EOP2);
 
 endmodule
