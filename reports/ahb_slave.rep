@@ -7,7 +7,7 @@ Report : timing
         -max_paths 1
 Design : ahb_slave
 Version: K-2015.06-SP1
-Date   : Thu Apr 28 11:42:24 2022
+Date   : Thu Apr 28 12:33:22 2022
 ****************************************
 
 Operating Conditions: typical   Library: osu05_stdcells
@@ -23,14 +23,14 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   prev_haddr_reg[1]/CLK (DFFSR)            0.00       0.00 r
   prev_haddr_reg[1]/Q (DFFSR)              1.11       1.11 r
-  U872/Y (INVX1)                           0.89       2.00 f
-  U870/Y (INVX2)                           0.34       2.34 r
-  U871/Y (INVX1)                           0.75       3.09 f
-  U1338/Y (OAI21X1)                        0.33       3.42 r
-  U1336/Y (OAI21X1)                        0.08       3.51 f
-  U1335/Y (AND2X1)                         0.76       4.27 f
-  U1302/Y (AOI22X1)                        0.23       4.49 r
-  U1301/Y (OAI21X1)                        0.05       4.55 f
+  U873/Y (INVX1)                           0.89       2.00 f
+  U871/Y (INVX2)                           0.34       2.34 r
+  U872/Y (INVX1)                           0.75       3.09 f
+  U1341/Y (OAI21X1)                        0.33       3.42 r
+  U1339/Y (OAI21X1)                        0.08       3.51 f
+  U1338/Y (AND2X1)                         0.76       4.27 f
+  U1305/Y (AOI22X1)                        0.23       4.49 r
+  U1304/Y (OAI21X1)                        0.05       4.55 f
   hrdata[1] (out)                          0.00       4.55 f
   data arrival time                                   4.55
   -----------------------------------------------------------
@@ -43,7 +43,7 @@ Wire Load Model Mode: top
 Report : area
 Design : ahb_slave
 Version: K-2015.06-SP1
-Date   : Thu Apr 28 11:42:24 2022
+Date   : Thu Apr 28 12:33:23 2022
 ****************************************
 
 Library(s) Used:
@@ -51,21 +51,21 @@ Library(s) Used:
     osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
 
 Number of ports:                          104
-Number of nets:                           703
-Number of cells:                          650
-Number of combinational cells:            506
+Number of nets:                           705
+Number of cells:                          652
+Number of combinational cells:            508
 Number of sequential cells:               144
 Number of macros/black boxes:               0
-Number of buf/inv:                        108
+Number of buf/inv:                        109
 Number of references:                      16
 
-Combinational area:             126540.000000
-Buf/Inv area:                    15696.000000
+Combinational area:             127179.000000
+Buf/Inv area:                    15840.000000
 Noncombinational area:          114048.000000
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (No wire load specified)
 
-Total cell area:                240588.000000
+Total cell area:                241227.000000
 Total area:                 undefined
 1
 Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
@@ -80,7 +80,7 @@ Report : power
         -analysis_effort low
 Design : ahb_slave
 Version: K-2015.06-SP1
-Date   : Thu Apr 28 11:42:25 2022
+Date   : Thu Apr 28 12:33:23 2022
 ****************************************
 
 
@@ -106,5 +106,5 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-ahb_slave                                 6.718   14.865   72.405   21.584 100.0
+ahb_slave                                 6.843   14.961   72.438   21.804 100.0
 1

@@ -1,0 +1,122 @@
+Information: Building the design 'flex_counter'. (HDL-193)
+Warning: Cannot find the design 'flex_counter' in the library 'WORK'. (LBR-1)
+Information: Building the design 'flex_pts_sr' instantiated from design 'tx' with
+	the parameters "NUM_BITS=8,SHIFT_MSB=0". (HDL-193)
+Warning: Cannot find the design 'flex_pts_sr' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'flex_counter' in 'tx'. (LINK-5)
+Warning: Unable to resolve reference 'flex_pts_sr' in 'tx'. (LINK-5)
+Warning: Design 'tx' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : tx
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 12:09:12 2022
+****************************************
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: CL/state_reg[1]
+              (rising edge-triggered flip-flop)
+  Endpoint: tx_error (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  CL/state_reg[1]/CLK (DFFSR)              0.00       0.00 r
+  CL/state_reg[1]/Q (DFFSR)                0.53       0.53 f
+  CL/U27/Y (INVX1)                         0.16       0.70 r
+  CL/U26/Y (NAND2X1)                       0.11       0.80 f
+  CL/U14/Y (OAI21X1)                       0.18       0.98 r
+  CL/U13/Y (INVX1)                         0.14       1.12 f
+  CL/U7/Y (AOI21X1)                        0.07       1.19 r
+  CL/tx_error (control_logic)              0.00       1.19 r
+  tx_error (out)                           0.00       1.19 r
+  data arrival time                                   1.19
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+Warning: Design 'tx' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : area
+Design : tx
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 12:09:12 2022
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                           74
+Number of nets:                           186
+Number of cells:                          120
+Number of combinational cells:             97
+Number of sequential cells:                21
+Number of macros/black boxes:               0
+Number of buf/inv:                         28
+Number of references:                       8
+
+Combinational area:              23175.000000
+Buf/Inv area:                     4032.000000
+Noncombinational area:           12672.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                 35847.000000
+Total area:                 undefined
+
+Information: This design contains black box (unknown) components. (RPT-8)
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+Warning: Design has unannotated black box outputs. (PWR-428)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : tx
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 12:09:13 2022
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+tx                                        2.680    4.299   10.543    6.979 100.0
+  CL (control_logic)                      0.370    2.098    3.757    2.467  35.4
+  ENC (encoder)                           1.170    1.743    5.987    2.913  41.7
+1

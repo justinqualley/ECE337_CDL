@@ -10,6 +10,7 @@ add wave -noupdate -color White -radix unsigned /tb_ahb_tx_cdl/tb_hwrite
 add wave -noupdate -color White -radix unsigned /tb_ahb_tx_cdl/tb_hwdata
 add wave -noupdate -color White -radix unsigned /tb_ahb_tx_cdl/tb_htrans
 add wave -noupdate -color White -radix unsigned /tb_ahb_tx_cdl/tb_hsize
+add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/data_hsize
 add wave -noupdate -color White -radix unsigned /tb_ahb_tx_cdl/tb_hsel
 add wave -noupdate -color White -radix unsigned /tb_ahb_tx_cdl/tb_hresp
 add wave -noupdate -color White -radix unsigned /tb_ahb_tx_cdl/tb_hready
@@ -38,8 +39,9 @@ add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/prev_tx_transfer_active
 add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/ENC/end_packet
 add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/rollover_flag
 add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/ENC/begin_packet
+add wave -noupdate -radix unsigned /tb_ahb_tx_cdl/DUT/TX/counter/count_out
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {312718 ps} 0}
+WaveRestoreCursors {{Cursor 1} {158563 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 231
 configure wave -valuecolwidth 40
@@ -55,4 +57,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {1344105 ps}
+WaveRestoreZoom {143145 ps} {227153 ps}

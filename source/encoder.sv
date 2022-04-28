@@ -41,7 +41,7 @@ module encoder (
 
   always_comb begin
     nxt_state = state;
-
+    encode = 0;
     case(state)
       `IDLE: begin
         encode = 0;

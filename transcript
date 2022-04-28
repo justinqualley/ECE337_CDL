@@ -12,425 +12,223 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -suppress 12110 -i -t ps mapped_work.tb_ahb_slave 
-# Start time: 11:43:33 on Apr 28,2022
+# vsim -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB "+no_glitch_msg" -coverage -voptargs="+acc" -suppress 12110 -i -t ps source_work.tb_ahb_tx_cdl 
+# Start time: 12:34:00 on Apr 28,2022
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: source/tb_ahb_slave.sv(174): (vopt-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 20, found 19.
-# ** Warning: source/tb_ahb_slave.sv(174): (vopt-2718) [TFMPC] - Missing connection for port 'dmode'.
 # ** Warning: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv(96): (vopt-2240) Treating stand-alone use of function 'pop_front' as an implicit VOID cast.
+# ** Note: (vopt-143) Recognized 1 FSM in module "ahb_slave(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "encoder(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "control_logic(fast)".
 # Loading sv_std.std
-# Loading work.tb_ahb_slave(fast)
+# Loading work.tb_ahb_tx_cdl(fast)
 # Loading /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim.ahb_lite_bus_cdl(fast)
+# Loading work.ahb_tx_cdl(fast)
 # Loading work.ahb_slave(fast)
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.math_real(body)
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffsr(metastabilitywrapperarch)#1
-# Loading ieee.vital_timing(body)
-# Loading ieee.vital_primitives(body)
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.prim(body)
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.dffsr_core(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x2(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.and2x2(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx2(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.bufx2(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.invx1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nor2x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.and2x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nand2x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.oai22x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.aoi21x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.aoi22x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nand3x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.oai21x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.mux2x1(behavioral)#1
-# Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.or2x1(behavioral)#1
-vlog -sv -work source_work /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_slave.sv
+# Loading work.tx(fast)
+# Loading work.flex_counter(fast)
+# Loading work.flex_pts_sr(fast)
+# Loading work.encoder(fast)
+# Loading work.control_logic(fast)
+# Loading work.data_buffer(fast)
+do /home/ecegrid/a/mg56/ECE337_CDL/wave1.do
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 1 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 2 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 3 times, errno 11
+# ** Error: Cannot lock WLF file: "vsim.wlf"
+#           errno 11: Resource temporarily unavailable.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: mg56  Hostname: ecegrid-thin5.ecn.purdue.edu  ProcessID: 7450
+#           Attempting to use alternate WLF file "./wlftGqtKKe".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftGqtKKe
+run -all
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Note: $stop    : source/tb_ahb_tx_cdl.sv(421)
+#    Time: 1340 ns  Iteration: 0  Instance: /tb_ahb_tx_cdl
+# Break in Module tb_ahb_tx_cdl at source/tb_ahb_tx_cdl.sv line 421
+vlog -sv -work source_work /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv
 # QuestaSim vlog 10.7a Compiler 2018.03 Mar 26 2018
-# Start time: 11:44:35 on Apr 28,2022
-# vlog -reportprogress 300 -sv -work source_work /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_slave.sv 
-# -- Compiling module tb_ahb_slave
+# Start time: 12:38:33 on Apr 28,2022
+# vlog -reportprogress 300 -sv -work source_work /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv 
+# -- Compiling module tb_ahb_tx_cdl
 # 
 # Top level modules:
-# 	tb_ahb_slave
-# End time: 11:44:35 on Apr 28,2022, Elapsed time: 0:00:00
+# 	tb_ahb_tx_cdl
+# End time: 12:38:33 on Apr 28,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 restart -f
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading sv_std.std
-# Loading work.tb_ahb_slave(fast)
+# Loading work.tb_ahb_tx_cdl(fast)
 # Loading /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim.ahb_lite_bus_cdl(fast)
+# Loading work.ahb_tx_cdl(fast)
 # Loading work.ahb_slave(fast)
+# Loading work.tx(fast)
+# Loading work.flex_counter(fast)
+# Loading work.flex_pts_sr(fast)
+# Loading work.encoder(fast)
+# Loading work.control_logic(fast)
+# Loading work.data_buffer(fast)
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 413
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 389
 run -all
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[7][0] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[5][1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\state_reg[0] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\state_reg[1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\state_reg[2] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\data_hsize_reg[0] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\data_hsize_reg[1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][0] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][2] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][3] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][4] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][5] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][6] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][7] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][7] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][6] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][5] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][4] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][3] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][2] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][0] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][7] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][6] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][5] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][4] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][3] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][2] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][0] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][7] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][6] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][5] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][4] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][3] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][2] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][0] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][7] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][6] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][5] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][4] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][3] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][2] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][1] 
-# ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
-#    Time: 5660 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[7][0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[5][1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\state_reg[0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\state_reg[1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\state_reg[2] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\data_hsize_reg[0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\data_hsize_reg[1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][2] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][3] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][4] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][5] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][6] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[1][7] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][7] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][6] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][5] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][4] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][3] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][2] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[3][0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][7] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][6] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][5] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][4] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][3] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][2] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[2][0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][7] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][6] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][5] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][4] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][3] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][2] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[0][0] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][7] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][6] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][5] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][4] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][3] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][2] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][1] 
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 5800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\mem_reg[12][0] 
-# ** Info: Correct 'tx_data' output during Alligned Write Transfer 1 Byte test case
-#    Time: 130 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Error: Incorrect 'tx_packet' output during Alligned Write Transfer 1 Byte test case
-#    Time: 130 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 304
-# ** Info: Correct 'store_tx_data' output during Alligned Write Transfer 1 Byte test case
-#    Time: 130 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Alligned Write Transfer 1 Byte test case
-#    Time: 130 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Alligned Write Transfer 1 Byte test case
-#    Time: 130 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Alligned Write Transfer 1 Byte test case
-#    Time: 130 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during Un-alligned Write Transfer 1 Byte test case
-#    Time: 220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during Un-alligned Write Transfer 1 Byte test case
-#    Time: 220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during Un-alligned Write Transfer 1 Byte test case
-#    Time: 220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Un-alligned Write Transfer 1 Byte test case
-#    Time: 220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Un-alligned Write Transfer 1 Byte test case
-#    Time: 220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Un-alligned Write Transfer 1 Byte test case
-#    Time: 220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Error: Incorrect 'tx_data' output during Alligned Write Transfer 2 Bytes test case
-#    Time: 310 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 296
-# ** Info: Correct 'tx_packet' output during Alligned Write Transfer 2 Bytes test case
-#    Time: 310 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during Alligned Write Transfer 2 Bytes test case
-#    Time: 310 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Alligned Write Transfer 2 Bytes test case
-#    Time: 310 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Alligned Write Transfer 2 Bytes test case
-#    Time: 310 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Alligned Write Transfer 2 Bytes test case
-#    Time: 310 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Error: Incorrect 'tx_data' output during Alligned Write Transfer 4 Bytes test case
-#    Time: 510 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 296
-# ** Info: Correct 'tx_packet' output during Alligned Write Transfer 4 Bytes test case
-#    Time: 510 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during Alligned Write Transfer 4 Bytes test case
-#    Time: 510 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Alligned Write Transfer 4 Bytes test case
-#    Time: 510 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Alligned Write Transfer 4 Bytes test case
-#    Time: 510 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Alligned Write Transfer 4 Bytes test case
-#    Time: 510 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Warning: */DFFSR_CORE HOLD High VIOLATION ON D WITH RESPECT TO CLK;
-#   Expected := 0.094 ns; Observed := 0 ns; At : 725.188 ns
-#    Time: 725188 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\prev_htrans_reg[1] /CELL_CORE
-# ** Warning: DFFSR instance metastable output value decayed to a '1' value
-#    Time: 725800 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\prev_htrans_reg[1] 
-# ** Info: Correct 'tx_data' output during W to R only register test case
-#    Time: 740 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during W to R only register test case
-#    Time: 740 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during W to R only register test case
-#    Time: 740 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during W to R only register test case
-#    Time: 740 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during W to R only register test case
-#    Time: 740 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during W to R only register test case
-#    Time: 740 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Warning: */DFFSR_CORE HOLD High VIOLATION ON D WITH RESPECT TO CLK;
-#   Expected := 0.094 ns; Observed := 0 ns; At : 805.188 ns
-#    Time: 805188 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\prev_htrans_reg[1] /CELL_CORE
-# ** Warning: DFFSR instance metastable output value decayed to a '0' value
-#    Time: 805698 ps  Iteration: 0  Instance: /tb_ahb_slave/DUT/\prev_htrans_reg[1] 
-# ** Info: Correct 'tx_data' output during Address out of bounds error test case
-#    Time: 810 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during Address out of bounds error test case
-#    Time: 810 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during Address out of bounds error test case
-#    Time: 810 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Address out of bounds error test case
-#    Time: 810 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Address out of bounds error test case
-#    Time: 810 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Address out of bounds error test case
-#    Time: 810 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during Read from Status Register test case
-#    Time: 880 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during Read from Status Register test case
-#    Time: 880 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during Read from Status Register test case
-#    Time: 880 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Read from Status Register test case
-#    Time: 880 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Read from Status Register test case
-#    Time: 880 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Read from Status Register test case
-#    Time: 880 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during Read from Error Register test case
-#    Time: 950 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during Read from Error Register test case
-#    Time: 950 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during Read from Error Register test case
-#    Time: 950 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Read from Error Register test case
-#    Time: 950 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Read from Error Register test case
-#    Time: 950 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Read from Error Register test case
-#    Time: 950 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during Read from Buffer Register test case
-#    Time: 1020 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during Read from Buffer Register test case
-#    Time: 1020 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during Read from Buffer Register test case
-#    Time: 1020 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during Read from Buffer Register test case
-#    Time: 1020 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during Read from Buffer Register test case
-#    Time: 1020 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during Read from Buffer Register test case
-#    Time: 1020 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during R/W from TX Control Register test case
-#    Time: 1100 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during R/W from TX Control Register test case
-#    Time: 1100 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during R/W from TX Control Register test case
-#    Time: 1100 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during R/W from TX Control Register test case
-#    Time: 1100 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during R/W from TX Control Register test case
-#    Time: 1100 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during R/W from TX Control Register test case
-#    Time: 1100 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during R/W from TX Control Register test case
-#    Time: 1140 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during R/W from TX Control Register test case
-#    Time: 1140 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during R/W from TX Control Register test case
-#    Time: 1140 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during R/W from TX Control Register test case
-#    Time: 1140 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during R/W from TX Control Register test case
-#    Time: 1140 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during R/W from TX Control Register test case
-#    Time: 1140 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during R/W from TX Control Register test case
-#    Time: 1180 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during R/W from TX Control Register test case
-#    Time: 1180 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during R/W from TX Control Register test case
-#    Time: 1180 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during R/W from TX Control Register test case
-#    Time: 1180 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during R/W from TX Control Register test case
-#    Time: 1180 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during R/W from TX Control Register test case
-#    Time: 1180 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during R/W from TX Control Register test case
-#    Time: 1220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Info: Correct 'tx_packet' output during R/W from TX Control Register test case
-#    Time: 1220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 300
-# ** Info: Correct 'store_tx_data' output during R/W from TX Control Register test case
-#    Time: 1220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during R/W from TX Control Register test case
-#    Time: 1220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during R/W from TX Control Register test case
-#    Time: 1220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during R/W from TX Control Register test case
-#    Time: 1220 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Info: Correct 'tx_data' output during R/W from Flush Register test case
-#    Time: 1300 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 292
-# ** Error: Incorrect 'tx_packet' output during R/W from Flush Register test case
-#    Time: 1300 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 304
-# ** Info: Correct 'store_tx_data' output during R/W from Flush Register test case
-#    Time: 1300 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 308
-# ** Info: Correct 'clear' output during R/W from Flush Register test case
-#    Time: 1300 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 316
-# ** Info: Correct 'hresp' output during R/W from Flush Register test case
-#    Time: 1300 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 324
-# ** Info: Correct 'hready' output during R/W from Flush Register test case
-#    Time: 1300 ns  Scope: tb_ahb_slave.check_outputs File: source/tb_ahb_slave.sv Line: 332
-# ** Note: $stop    : source/tb_ahb_slave.sv(695)
-#    Time: 1300100 ps  Iteration: 0  Instance: /tb_ahb_slave
-# Break in Module tb_ahb_slave at source/tb_ahb_slave.sv line 695
-# End time: 11:44:57 on Apr 28,2022, Elapsed time: 0:01:24
-# Errors: 4, Warnings: 98
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Note: $stop    : /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(423)
+#    Time: 1340 ns  Iteration: 0  Instance: /tb_ahb_tx_cdl
+# Break in Module tb_ahb_tx_cdl at /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv line 423
+vlog -sv -work source_work /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv
+# QuestaSim vlog 10.7a Compiler 2018.03 Mar 26 2018
+# Start time: 12:42:01 on Apr 28,2022
+# vlog -reportprogress 300 -sv -work source_work /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv 
+# -- Compiling module tb_ahb_tx_cdl
+# 
+# Top level modules:
+# 	tb_ahb_tx_cdl
+# End time: 12:42:01 on Apr 28,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.tb_ahb_tx_cdl(fast)
+# Loading /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim.ahb_lite_bus_cdl(fast)
+# Loading work.ahb_tx_cdl(fast)
+# Loading work.ahb_slave(fast)
+# Loading work.tx(fast)
+# Loading work.flex_counter(fast)
+# Loading work.flex_pts_sr(fast)
+# Loading work.encoder(fast)
+# Loading work.control_logic(fast)
+# Loading work.data_buffer(fast)
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 437
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 413
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 389
+run -all
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Note: $stop    : /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(447)
+#    Time: 1770 ns  Iteration: 0  Instance: /tb_ahb_tx_cdl
+# Break in Module tb_ahb_tx_cdl at /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv line 447
+add wave -position insertpoint  \
+sim:/tb_ahb_tx_cdl/DUT/AHB/clear
+restart -f
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading sv_std.std
+# Loading work.tb_ahb_tx_cdl(fast)
+# Loading /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim.ahb_lite_bus_cdl(fast)
+# Loading work.ahb_tx_cdl(fast)
+# Loading work.ahb_slave(fast)
+# Loading work.tx(fast)
+# Loading work.flex_counter(fast)
+# Loading work.flex_pts_sr(fast)
+# Loading work.encoder(fast)
+# Loading work.control_logic(fast)
+# Loading work.data_buffer(fast)
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 437
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 413
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 389
+run -all
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Note: $stop    : /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(447)
+#    Time: 1770 ns  Iteration: 0  Instance: /tb_ahb_tx_cdl
+# Break in Module tb_ahb_tx_cdl at /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv line 447
+add wave -position insertpoint  \
+sim:/tb_ahb_tx_cdl/DUT/DB/nxt_buffer_occupancy
+restart -f
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading sv_std.std
+# Loading work.tb_ahb_tx_cdl(fast)
+# Loading /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim.ahb_lite_bus_cdl(fast)
+# Loading work.ahb_tx_cdl(fast)
+# Loading work.ahb_slave(fast)
+# Loading work.tx(fast)
+# Loading work.flex_counter(fast)
+# Loading work.flex_pts_sr(fast)
+# Loading work.encoder(fast)
+# Loading work.control_logic(fast)
+# Loading work.data_buffer(fast)
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 437
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 413
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 389
+run -all
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Note: $stop    : /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(447)
+#    Time: 1770 ns  Iteration: 0  Instance: /tb_ahb_tx_cdl
+# Break in Module tb_ahb_tx_cdl at /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv line 447
+add wave -position insertpoint  \
+sim:/tb_ahb_tx_cdl/DUT/DB/nxt_buffer
+restart -f
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading sv_std.std
+# Loading work.tb_ahb_tx_cdl(fast)
+# Loading /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim.ahb_lite_bus_cdl(fast)
+# Loading work.ahb_tx_cdl(fast)
+# Loading work.ahb_slave(fast)
+# Loading work.tx(fast)
+# Loading work.flex_counter(fast)
+# Loading work.flex_pts_sr(fast)
+# Loading work.encoder(fast)
+# Loading work.control_logic(fast)
+# Loading work.data_buffer(fast)
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 437
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 413
+# ** Warning: (vsim-3839) Variable '/tb_ahb_tx_cdl/tb_hsize', driven via a port connection, is multiply driven. See /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(130).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_ahb_tx_cdl File: /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv Line: 389
+run -all
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 540 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Error: Incorrect 'hresp' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 273
+# ** Error: Incorrect 'hready' response from slave device during address phase of transaction (transaction 0)
+#    Time: 590 ns  Scope: tb_ahb_tx_cdl.BFM File: /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Source/ahb_lite_bus_cdl.sv Line: 280
+# ** Note: $stop    : /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv(447)
+#    Time: 1770 ns  Iteration: 0  Instance: /tb_ahb_tx_cdl
+# Break in Module tb_ahb_tx_cdl at /home/ecegrid/a/mg56/ECE337_CDL/source/tb_ahb_tx_cdl.sv line 447

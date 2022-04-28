@@ -34,7 +34,7 @@ module control_logic (
       prev_tx_packet <= 0;
     end else begin
       state <= nxt_state;
-      prev_tx_packet = tx_packet;
+      prev_tx_packet <= tx_packet;
     end
   end
   always_comb begin

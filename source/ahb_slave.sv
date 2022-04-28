@@ -59,14 +59,17 @@ always_comb begin
                 next_state = (data_hsize > 2'd0) ? B1 : IDLE;            //Go to 2 byte transfer if size demands
               end
         B1:   begin
+                store_tx_data = 1'b1;
                 tx_data = mem[1];                       
                 next_state = (data_hsize > 2'd1) ? B2 : IDLE;            //Go to 4 byte transfer if size demands
               end
         B2:   begin
+                store_tx_data = 1'b1;
                 tx_data = mem[2];
                 next_state = B3;                                    //3rd byte transferred
               end       
         B3:   begin
+                store_tx_data = 1'b1;
                 tx_data = mem[3];
                 next_data_hsize = '0;
                 next_state = IDLE;                                  //4th byte transferred
@@ -116,7 +119,7 @@ always_comb begin
 end
 
 logic tx_transfer_active_trigger;
-reg prev_tx_transfer_active;
+logic prev_tx_transfer_active;
 
 always_ff @(posedge clk or negedge n_rst) begin
   if(1'b0 == n_rst)
@@ -131,7 +134,6 @@ always_comb begin
     dmode = tx_transfer_active;
     hrdata = '0;
     next_mem     = mem;
-   
     next_mem[5]  = (tx_transfer_active == 1'b1) ? 8'b10 : mem[5];        //Status Register
     next_mem[7]  = (tx_error == 1'b1)           ? 8'b1  : mem[7];        //Error Register
     next_mem[8]  = buffer_occupancy;

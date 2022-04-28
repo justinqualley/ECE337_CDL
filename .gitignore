@@ -11,3 +11,8 @@ alib-52/
 *.BAK
 #*#
 *.wlf
+*.qdb
+*.qpb
+*.qtl
+_vmake
+_info
