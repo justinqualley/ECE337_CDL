@@ -24,7 +24,6 @@ module tx(
   logic is_eop;
   logic [7:0] shift_data;
   logic serial_out;
-  logic prev_dplus;
 
   // Should clear be tx_error?
   logic clear;
@@ -53,22 +52,24 @@ module tx(
     .serial_out(serial_out) 
   );
 
+  logic nxt_dplus;
+
   always_ff @(posedge clk, negedge n_rst) begin
     if (n_rst == 0) begin
-      prev_dplus <= 1;
+      dplus_out <= 1;
     end else begin
-      prev_dplus <= dplus_out;
+      dplus_out <= nxt_dplus;
     end
   end
 
-  //always_comb begin
-  //  if(tx_transfer_active)
-  //    dplus_out = (prev_serial_out == serial_out);
-  //  else
-  //    dplus_out = 1
-  //end
-  //assign dplus_out = (prev_serial_out == serial_out);
-  assign dplus_out = (tx_transfer_active)? (prev_dplus != serial_out) : 1;
+  always_comb begin
+    nxt_dplus = 1;
+    if(tx_transfer_active)
+      nxt_dplus = (dplus_out != serial_out);
+    else if (is_eop)
+      nxt_dplus = 0;
+      
+  end
   assign dminus_out = is_eop? !dplus_out : 0;
 
   // ************************************************************
