@@ -254,6 +254,8 @@ initial begin
     #(CLK_PERIOD);
   end
 
+  tb_buffer_occupancy = 0;
+
   for(int cnt = 0; cnt < 8; cnt = cnt + 1) begin
     #(CLK_PERIOD);
   end

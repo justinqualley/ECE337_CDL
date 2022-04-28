@@ -25,8 +25,8 @@ module encoder (
   output logic is_eop
 );
 
-  logic [1:0] state;
-  logic [1:0] nxt_state;
+  logic [2:0] state;
+  logic [2:0] nxt_state;
 
   always_ff @(posedge clk, negedge n_rst) begin
     if (n_rst == 0) begin
