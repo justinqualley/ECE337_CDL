@@ -22,10 +22,10 @@ add wave -noupdate -color Cyan /tb_ahb_tx_cdl/tb_dplus_out
 add wave -noupdate -color Cyan /tb_ahb_tx_cdl/tb_dminus_out
 add wave -noupdate -color Cyan /tb_ahb_tx_cdl/tb_dmode
 add wave -noupdate -color Cyan /tb_ahb_tx_cdl/DUT/AHB/tx_packet
+add wave -noupdate -color Cyan -radix unsigned /tb_ahb_tx_cdl/DUT/TX/tx_packet_data
 add wave -noupdate -divider {Data Buffer}
 add wave -noupdate -color Orange -radix unsigned /tb_ahb_tx_cdl/DUT/DB/buffer_occupancy
 add wave -noupdate -color Orange -radix unsigned /tb_ahb_tx_cdl/DUT/DB/tx_data
-add wave -noupdate -color Orange /tb_ahb_tx_cdl/DUT/AHB/tx_transfer_active
 add wave -noupdate -color Orange -radix unsigned /tb_ahb_tx_cdl/DUT/DB/store_tx_data
 add wave -noupdate -color Orange /tb_ahb_tx_cdl/DUT/DB/buffer
 add wave -noupdate -divider Control
@@ -33,13 +33,14 @@ add wave -noupdate -radix unsigned -childformat {{{/tb_ahb_tx_cdl/DUT/TX/CL/stat
 add wave -noupdate -divider Encoder
 add wave -noupdate -radix unsigned -childformat {{{/tb_ahb_tx_cdl/DUT/TX/ENC/state[1]} -radix unsigned} {{/tb_ahb_tx_cdl/DUT/TX/ENC/state[0]} -radix unsigned}} -subitemconfig {{/tb_ahb_tx_cdl/DUT/TX/ENC/state[1]} {-height 16 -radix unsigned} {/tb_ahb_tx_cdl/DUT/TX/ENC/state[0]} {-height 16 -radix unsigned}} /tb_ahb_tx_cdl/DUT/TX/ENC/state
 add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/tx_transfer_active_trigger
-add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/present_value
-add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/past_value
+add wave -noupdate -color Orange /tb_ahb_tx_cdl/DUT/AHB/tx_transfer_active
+add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/prev_tx_transfer_active
+add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/ENC/end_packet
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {260962 ps} 0}
+WaveRestoreCursors {{Cursor 1} {432360 ps} 0}
 quietly wave cursor active 1
-configure wave -namecolwidth 107
-configure wave -valuecolwidth 98
+configure wave -namecolwidth 231
+configure wave -valuecolwidth 39
 configure wave -justifyvalue left
 configure wave -signalnamewidth 1
 configure wave -snapdistance 10
@@ -52,4 +53,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {208541 ps} {344620 ps}
+WaveRestoreZoom {189644 ps} {687284 ps}
