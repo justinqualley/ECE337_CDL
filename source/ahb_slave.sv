@@ -41,6 +41,9 @@ end
 
 always_comb begin
     next_data_hsize = (prev_haddr inside {[0:3]} && hsel == 1'b1 && prev_hwrite == 1'b1) ? prev_hsize : data_hsize;
+    next_state = state;
+    tx_data = '0;
+    store_tx_data = '0;
     case(state)
         IDLE: begin                                                 
                 store_tx_data = 1'b0;
@@ -113,7 +116,7 @@ always_comb begin
 end
 
 logic tx_transfer_active_trigger;
-logic prev_tx_transfer_active;
+reg prev_tx_transfer_active;
 
 always_ff @(posedge clk or negedge n_rst) begin
   if(1'b0 == n_rst)
@@ -128,6 +131,7 @@ always_comb begin
     dmode = tx_transfer_active;
     hrdata = '0;
     next_mem     = mem;
+   
     next_mem[5]  = (tx_transfer_active == 1'b1) ? 8'b10 : mem[5];        //Status Register
     next_mem[7]  = (tx_error == 1'b1)           ? 8'b1  : mem[7];        //Error Register
     next_mem[8]  = buffer_occupancy;

@@ -31,14 +31,15 @@ add wave -noupdate -color Orange /tb_ahb_tx_cdl/DUT/DB/buffer
 add wave -noupdate -divider Control
 add wave -noupdate -radix unsigned -childformat {{{/tb_ahb_tx_cdl/DUT/TX/CL/state[1]} -radix unsigned} {{/tb_ahb_tx_cdl/DUT/TX/CL/state[0]} -radix unsigned}} -subitemconfig {{/tb_ahb_tx_cdl/DUT/TX/CL/state[1]} {-height 16 -radix unsigned} {/tb_ahb_tx_cdl/DUT/TX/CL/state[0]} {-height 16 -radix unsigned}} /tb_ahb_tx_cdl/DUT/TX/CL/state
 add wave -noupdate -divider Encoder
-add wave -noupdate -radix unsigned -childformat {{{/tb_ahb_tx_cdl/DUT/TX/ENC/state[1]} -radix unsigned} {{/tb_ahb_tx_cdl/DUT/TX/ENC/state[0]} -radix unsigned}} -subitemconfig {{/tb_ahb_tx_cdl/DUT/TX/ENC/state[1]} {-height 16 -radix unsigned} {/tb_ahb_tx_cdl/DUT/TX/ENC/state[0]} {-height 16 -radix unsigned}} /tb_ahb_tx_cdl/DUT/TX/ENC/state
+add wave -noupdate -radix unsigned -childformat {{{/tb_ahb_tx_cdl/DUT/TX/ENC/state[2]} -radix unsigned} {{/tb_ahb_tx_cdl/DUT/TX/ENC/state[1]} -radix unsigned} {{/tb_ahb_tx_cdl/DUT/TX/ENC/state[0]} -radix unsigned}} -subitemconfig {{/tb_ahb_tx_cdl/DUT/TX/ENC/state[2]} {-height 16 -radix unsigned} {/tb_ahb_tx_cdl/DUT/TX/ENC/state[1]} {-height 16 -radix unsigned} {/tb_ahb_tx_cdl/DUT/TX/ENC/state[0]} {-height 16 -radix unsigned}} /tb_ahb_tx_cdl/DUT/TX/ENC/state
 add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/tx_transfer_active_trigger
 add wave -noupdate -color Orange /tb_ahb_tx_cdl/DUT/AHB/tx_transfer_active
 add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/prev_tx_transfer_active
 add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/ENC/end_packet
 add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/rollover_flag
+add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/ENC/begin_packet
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {453921 ps} 0}
+WaveRestoreCursors {{Cursor 1} {312718 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 231
 configure wave -valuecolwidth 40
@@ -54,4 +55,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {231709 ps} {729349 ps}
+WaveRestoreZoom {0 ps} {1344105 ps}

@@ -183,6 +183,7 @@ ahb_slave DUT ( .clk(tb_clk), .n_rst(tb_n_rst),
                         .hrdata(tb_hrdata),
                         .hresp(tb_hresp),
                         .hready(tb_hready),
+                        .dmode(tb_dmode),
                         //Data Buffer Side
                         .tx_transfer_active(tb_tx_transfer_active),
                         .tx_error(tb_tx_error),

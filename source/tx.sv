@@ -33,7 +33,7 @@ module tx(
   flex_counter counter (
     .clk(clk),
     .n_rst(n_rst),
-    .clear(clear),
+    .clear(end_packet),
     .count_enable(tx_transfer_active),
     .rollover_val(4'd8),
     .count_out(count),
@@ -68,7 +68,7 @@ module tx(
   //    dplus_out = 1
   //end
   //assign dplus_out = (prev_serial_out == serial_out);
-  assign dplus_out = (count>0)? (prev_dplus != serial_out) : 1;
+  assign dplus_out = (tx_transfer_active)? (prev_dplus != serial_out) : 1;
   assign dminus_out = is_eop? !dplus_out : 0;
 
   // ************************************************************

@@ -8,6 +8,7 @@
 `define IDLE 2'b00
 `define BEGIN 2'b01
 `define ACTIVE 2'b10
+`define DELAY 2'b11
 
 module control_logic (
   input logic clk,
@@ -36,7 +37,6 @@ module control_logic (
       prev_tx_packet = tx_packet;
     end
   end
-
   always_comb begin
     nxt_state = state;
 
@@ -50,8 +50,9 @@ module control_logic (
       end
       `ACTIVE: begin
         if(end_packet)
-          nxt_state = `IDLE;
-      end
+          nxt_state = `DELAY;
+        end
+      `DELAY: begin nxt_state = `IDLE; end
     endcase
 
     tx_error = 0;
