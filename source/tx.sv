@@ -19,16 +19,60 @@ module tx(
   output logic dminus_out
 );
 
+  // Should clear be tx_error?
+  logic clear;
+  logic count;
   logic rollover_flag;
-  flex_counter bruh
-  (
-    .clk(),
-    .n_rst(),
-    .clear(),
-    .count_enable(),
+  flex_counter counter (
+    .clk(clk),
+    .n_rst(n_rst),
+    .clear(clear),
+    .count_enable(tx_transfer_active),
     .rollover_val(8),
-    .count_out(),
-    .rollover_flag()
+    .count_out(count),
+    .rollover_flag(rollover_flag)
   );
+
+  flex_pts_sr #(
+    .NUM_BITS(4),
+    .SHIFT_MSB(0)
+  )
+  CORE(
+    .clk(clk),
+    .n_rst(n_rst),
+    .shift_enable(tx_transfer_active),
+    .load_enable(rollover_flag),
+    .parallel_in(shift_data),
+    .serial_out(dplus_out) 
+  );
+  assign dminus_out = !dplus_out;
+
+  
+
+  logic end_packet;
+  logic begin_packet;
+  // ************************************************************
+  // * ENCODER
+  // ************************************************************
+  encoder (
+    .clk(clk),
+    .n_rst(n_rst),
+
+  );
+
+  // ************************************************************
+  // * CONTROL LOGIC
+  // ************************************************************
+  control_logic (
+    .clk(clk),
+    .n_rst(n_rst),
+    .tx_packet(tx_packet),
+    .end_packet(end_packet),
+    .tx_transfer_active(tx_transfer_active),
+    .get_tx_packet_data(get_tx_packet_data),
+    .begin_packet(begin_packet),
+    .tx_error(tx_error)
+  );
+
 
 endmodule
