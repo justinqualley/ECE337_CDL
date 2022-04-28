@@ -24,7 +24,7 @@ module tx(
   logic is_eop;
   logic [7:0] shift_data;
   logic serial_out;
-  logic prev_serial_out;
+  logic prev_dplus;
 
   // Should clear be tx_error?
   logic clear;
@@ -55,9 +55,9 @@ module tx(
 
   always_ff @(posedge clk, negedge n_rst) begin
     if (n_rst == 0) begin
-      prev_serial_out <= 1;
+      prev_dplus <= 1;
     end else begin
-      prev_serial_out <= serial_out;
+      prev_dplus <= dplus_out;
     end
   end
 
@@ -67,8 +67,9 @@ module tx(
   //  else
   //    dplus_out = 1
   //end
-  assign dplus_out = (prev_serial_out == serial_out);
-  assign dminus_out = is_eop? 0 : !dplus_out;
+  //assign dplus_out = (prev_serial_out == serial_out);
+  assign dplus_out = (count>0)? (prev_dplus != serial_out) : 1;
+  assign dminus_out = is_eop? !dplus_out : 0;
 
   // ************************************************************
   // * ENCODER
