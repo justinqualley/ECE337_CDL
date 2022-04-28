@@ -19,6 +19,13 @@ module tx(
   output logic dminus_out
 );
 
+  logic end_packet;
+  logic begin_packet;
+  logic is_eop;
+  logic [7:0] shift_data;
+  logic serial_out;
+  logic prev_serial_out;
+
   // Should clear be tx_error?
   logic clear;
   logic count;
@@ -43,21 +50,40 @@ module tx(
     .shift_enable(tx_transfer_active),
     .load_enable(rollover_flag),
     .parallel_in(shift_data),
-    .serial_out(dplus_out) 
+    .serial_out(serial_out) 
   );
-  assign dminus_out = !dplus_out;
 
-  
+  always_ff @(posedge clk, negedge n_rst) begin
+    if (n_rst == 0) begin
+      prev_serial_out <= 1;
+    end else begin
+      prev_serial_out <= serial_out;
+    end
+  end
 
-  logic end_packet;
-  logic begin_packet;
+  //always_comb begin
+  //  if(tx_transfer_active)
+  //    dplus_out = (prev_serial_out == serial_out);
+  //  else
+  //    dplus_out = 1
+  //end
+  assign dplus_out = (prev_serial_out == serial_out);
+  assign dminus_out = is_eop? 0 : !dplus_out;
+
   // ************************************************************
   // * ENCODER
   // ************************************************************
   encoder (
     .clk(clk),
     .n_rst(n_rst),
-
+    .begin_packet(begin_packet),
+    .tx_packet(tx_packet),
+    .tx_packet_data(tx_packet_data),
+    .rollover_flag(rollover_flag),
+    .buffer_occupancy(buffer_occupancy),
+    .end_packet(end_packet),
+    .shift_data(shift_data),
+    .is_eop(is_eop)
   );
 
   // ************************************************************

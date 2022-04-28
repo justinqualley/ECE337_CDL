@@ -24,12 +24,15 @@ module control_logic (
 
   logic [1:0] state;
   logic [1:0] nxt_state;
+  logic [1:0] prev_tx_packet;
 
   always_ff @(posedge clk, negedge n_rst) begin
     if (n_rst == 0) begin
       state <= 0;
+      prev_tx_packet <= 0;
     end else begin
       state <= nxt_state;
+      prev_tx_packet = tx_packet;
     end
   end
 
@@ -49,6 +52,16 @@ module control_logic (
           nxt_state = `IDLE;
       end
     endcase
+
+    tx_error = 0;
+    if(tx_packet != 0) begin // if not idle
+      if(tx_packet != prev_tx_packet) begin // check if tx_packet has changed
+        if(tx_transfer_active) // if it has changed but transfer is still active, that is an error
+          tx_error = 1;
+        else if((tx_packet == 1) & (buffer_occupancy == 0)) // if sending data and buffer is empty, that is an error
+          tx_error = 1;
+      end
+    end
   end
 
   assign tx_transfer_active = (state == `BEGIN) | (state == `ACTIVE);
