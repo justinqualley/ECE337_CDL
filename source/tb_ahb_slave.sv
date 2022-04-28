@@ -38,10 +38,17 @@ localparam BURST_WRAP16 = 3'd6;
 localparam BURST_INCR16 = 3'd7;
 
 // Define our address mapping scheme via constants
-localparam ADDR_READ_MIN  = 8'd0;
-localparam ADDR_READ_MAX  = 8'd127;
-localparam ADDR_WRITE_MIN = 8'd64;
-localparam ADDR_WRITE_MAX = 8'd255;
+//localparam ADDR_READ_MIN  = 8'd0;
+//localparam ADDR_READ_MAX  = 8'd127;
+//localparam ADDR_WRITE_MIN = 8'd64;
+//localparam ADDR_WRITE_MAX = 8'd255;
+
+localparam ADDR_DATA = 8'd0;
+localparam ADDR_STATUS = 8'd4;
+localparam ADDR_ERROR = 8'd6;
+localparam ADDR_BUFFER = 8'd8;
+localparam ADDR_CONTROL = 8'd12;
+localparam ADDR_FLUSH = 8'd13;
 
 //*****************************************************************************
 // Declare TB Signals (Bus Model Controls)
@@ -101,12 +108,12 @@ logic       tb_tx_error;
 logic       tb_store_tx_data;
 logic       tb_clear;
 logic [7:0] tb_tx_data;
-logic [1:0] tb_tx_packet;
-logic [7:0] tb_buffer_occupancy;
+logic [2:0] tb_tx_packet;
+logic [6:0] tb_buffer_occupancy;
 
 // Expected value check signals
 logic [7:0] tb_expected_tx_data;
-logic [1:0] tb_expected_tx_packet;
+logic [2:0] tb_expected_tx_packet;
 logic       tb_expected_store_tx_data;
 logic       tb_expected_clear, tb_expected_hresp, tb_expected_hready;
 
@@ -411,7 +418,7 @@ initial begin
   #(CLK_PERIOD);
 
   // Enqueue the needed transactions
-  enqueue_transaction(1'b1, 1'b1, 8'd64, '{8'd10}, BURST_SINGLE, 1'b0, 2'd0);
+  enqueue_transaction(1'b1, 1'b1, 8'd0, '{8'd10}, BURST_SINGLE, 1'b0, 2'd0);
   tb_expected_tx_data       = '{8'd10};
   tb_expected_tx_packet     = 2'd3;
   tb_expected_store_tx_data = 1'b1;
@@ -431,9 +438,9 @@ initial begin
   #(CLK_PERIOD);
 
   // Enqueue the needed transactions
-  enqueue_transaction(1'b1, 1'b1, 8'd128, '{8'd10}, BURST_SINGLE, 1'b0, 2'd0);
+  enqueue_transaction(1'b1, 1'b1, 8'd1, '{8'd10}, BURST_SINGLE, 1'b0, 2'd0);
   tb_expected_tx_data       = '{8'd10};
-  tb_expected_tx_packet     = 2'd3;
+  tb_expected_tx_packet     = '0;
   tb_expected_store_tx_data = 1'b1;
   tb_expected_clear         = '0;
   tb_expected_hready        = '0;
@@ -454,9 +461,9 @@ initial begin
   #(CLK_PERIOD);
 
   // Enqueue the needed transactions
-  enqueue_transaction(1'b1, 1'b1, 8'd64, '{16'd100}, BURST_SINGLE, 1'b0, 2'd1);
+  enqueue_transaction(1'b1, 1'b1, 8'd64, '{16'd1000}, BURST_SINGLE, 1'b0, 2'd1);
   tb_expected_tx_data       = '{8'd100};
-  tb_expected_tx_packet     = 2'd3;
+  tb_expected_tx_packet     = '0;
   tb_expected_store_tx_data = 1'b1;
   tb_expected_clear         = '0;
   tb_expected_hready        = '0;
@@ -475,7 +482,7 @@ initial begin
   #(CLK_PERIOD);
 
   // Enqueue the needed transactions
-  enqueue_transaction(1'b1, 1'b1, 8'd64, '{16'd100}, BURST_SINGLE, 1'b0, 2'd1);
+  enqueue_transaction(1'b1, 1'b1, 8'd0, '{16'd1000}, BURST_SINGLE, 1'b0, 2'd1);
   execute_transactions(1);
   #(2*CLK_PERIOD)
 
@@ -491,9 +498,9 @@ initial begin
   #(CLK_PERIOD);
 
   // Enqueue the needed transactions
-  enqueue_transaction(1'b1, 1'b1, 8'd64, '{32'd1000}, BURST_SINGLE, 1'b0, 2'd2);
+  enqueue_transaction(1'b1, 1'b1, 8'd0, '{32'd1020}, BURST_SINGLE, 1'b0, 2'd2);
   tb_expected_tx_data       = '{8'd232};
-  tb_expected_tx_packet     = 2'd3;
+  tb_expected_tx_packet     = '0;
   tb_expected_store_tx_data = 1'b1;
   tb_expected_clear         = '0;
   tb_expected_hready        = '0;
@@ -512,43 +519,23 @@ initial begin
   #(CLK_PERIOD);
 
   // Enqueue the needed transactions
-  enqueue_transaction(1'b1, 1'b1, 8'd64, '{32'd1000}, BURST_SINGLE, 1'b0, 2'd2);
+  enqueue_transaction(1'b1, 1'b1, 8'd64, '{32'd1020}, BURST_SINGLE, 1'b0, 2'd2);
   execute_transactions(1);
   #(4*CLK_PERIOD)
 
   //*****************************************************************************
-  // Test Case: Back-to-Back Write/Read
+  // Test Case: Write to Read Only Error
   //*****************************************************************************
   // Update Navigation Info
-  tb_test_case     = "Back to back Write/Read";
+  tb_test_case     = "W to R only register";
   tb_test_case_num = tb_test_case_num + 1;
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
-
-  // Enqueue the needed transactions
-  tb_test_data = '{32'hADAD8000};
-  // Enqueue the write
-  enqueue_transaction(1'b1, 1'b1, 8'd70, tb_test_data, BURST_SINGLE, 1'b0, 2'd2);
-  // Enqueue the 'check' read
-  enqueue_transaction(1'b1, 1'b0, 8'd70, tb_test_data, BURST_SINGLE, 1'b0, 2'd2);
-  
-  // Run the transactions via the model
-  execute_transactions(2);
-
-  //*****************************************************************************
-  // Test Case: Erroneous Singleton Write
-  //*****************************************************************************
-  // Update Navigation Info
-  tb_test_case     = "Erroneous Single Word Write";
-  tb_test_case_num = tb_test_case_num + 1;
-
-  // Reset the DUT to isolate from prior test case
-  reset_dut();
-
+  reset_model();
   // Enqueue the needed transactions
   tb_test_data = '{32'd1000}; 
-  enqueue_transaction(1'b1, 1'b1, 8'd32, tb_test_data, BURST_SINGLE, 1'b1, 2'd2);
+  enqueue_transaction(1'b1, 1'b1, 8'd4, tb_test_data, BURST_SINGLE, 1'b1, 2'd2);
   tb_expected_tx_data       = '0;
   tb_expected_tx_packet     = '0;
   tb_expected_store_tx_data = '0;
@@ -558,25 +545,28 @@ initial begin
   //Check for correct behavior
   execute_transactions(1);
   check_outputs();
-
-
 //*****************************************************************************
-  // Test Case: Erroneous Singleton Read
+  // Test Case: Address out of Bounds Error
   //*****************************************************************************
   // Update Navigation Info
-  tb_test_case     = "Erroneous Single Word Read";
+  tb_test_case     = "Address out of bounds error";
   tb_test_case_num = tb_test_case_num + 1;
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
-
+  reset_model();
   // Enqueue the needed transactions
-  tb_test_data = '{32'd1000}; 
-  enqueue_transaction(1'b1, 1'b0, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd2);
+  tb_expected_tx_data       = '0;
+  tb_expected_tx_packet     = '0;
+  tb_expected_store_tx_data = '0;
+  tb_expected_clear         = '0;
+  tb_expected_hready        = '0;
+  tb_expected_hresp         = '1;
+  enqueue_transaction(1'b1, 1'b0, 8'd15, tb_test_data, BURST_SINGLE, 1'b1, 2'd2);
   
   // Run the transactions via the model
   execute_transactions(1);
-
+  check_outputs();
   //*****************************************************************************
   // Test Case: Read from Status Register
   //*****************************************************************************
@@ -586,13 +576,21 @@ initial begin
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
-
+  reset_model();
   // Enqueue the needed transactions
-  tb_test_data = '{32'd1000}; 
-  enqueue_transaction(1'b1, 1'b0, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd1);
+  tb_tx_transfer_active = 1'b1;
+  tb_expected_tx_data       = '0;
+  tb_expected_tx_packet     = '0;
+  tb_expected_store_tx_data = '0;
+  tb_expected_clear         = '0;
+  tb_expected_hready        = '1;
+  tb_expected_hresp         = '0;
+  enqueue_transaction(1'b1, 1'b0, 8'd4, '{32'd512}, BURST_SINGLE, 1'b0, 2'd1);
   
   // Run the transactions via the model
   execute_transactions(1);
+  tb_tx_transfer_active = 1'b0;
+  check_outputs();
   //*****************************************************************************
   // Test Case: Read from Error Register
   //*****************************************************************************
@@ -602,29 +600,33 @@ initial begin
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
-
+  reset_model();
   // Enqueue the needed transactions
-  tb_test_data = '{32'd1000}; 
-  enqueue_transaction(1'b1, 1'b0, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd1);
+  tb_tx_error = 1'b1;
+  enqueue_transaction(1'b1, 1'b0, 8'd6, '{32'd256}, BURST_SINGLE, 1'b0, 2'd1);
   
   // Run the transactions via the model
   execute_transactions(1);
+  tb_tx_error = 1'b0;
+  check_outputs();
   //*****************************************************************************
   // Test Case: Read from Buffer Register
   //*****************************************************************************
   // Update Navigation Info
-  tb_test_case     = "Read from Data Register";
+  tb_test_case     = "Read from Buffer Register";
   tb_test_case_num = tb_test_case_num + 1;
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
-
+  reset_model();
+  tb_buffer_occupancy = 7'd4;
   // Enqueue the needed transactions
-  tb_test_data = '{32'd1000}; 
-  enqueue_transaction(1'b1, 1'b0, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd0);
+  enqueue_transaction(1'b1, 1'b0, 8'd8, '{7'd4}, BURST_SINGLE, 1'b0, 2'd0);
   
   // Run the transactions via the model
   execute_transactions(1);
+  tb_buffer_occupancy = '0;
+  check_outputs();
   //*****************************************************************************
   // Test Case: R/W from TX Control Register
   //*****************************************************************************
@@ -634,13 +636,44 @@ initial begin
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
-
+  reset_model();
+  tb_expected_tx_data       = '0;
+  tb_expected_store_tx_data = '0;
+  tb_expected_clear         = '0;
+  tb_expected_hready        = '1;
+  tb_expected_hresp         = '0;
   // Enqueue the needed transactions
-  tb_test_data = '{32'd1000}; 
-  enqueue_transaction(1'b1, 1'b1, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd1);
-  enqueue_transaction(1'b1, 1'b0, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd1);
+  tb_test_data = '{32'd1}; 
+  enqueue_transaction(1'b1, 1'b1, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  enqueue_transaction(1'b1, 1'b0, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
   // Run the transactions via the model
+  tb_expected_tx_packet     = 8'd1;
   execute_transactions(2);
+  check_outputs();
+
+  tb_test_data = '{32'd2}; 
+  enqueue_transaction(1'b1, 1'b1, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  enqueue_transaction(1'b1, 1'b0, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  // Run the transactions via the model
+  tb_expected_tx_packet     = 8'd2;
+  execute_transactions(2);
+  check_outputs();
+
+  tb_test_data = '{32'd3}; 
+  enqueue_transaction(1'b1, 1'b1, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  enqueue_transaction(1'b1, 1'b0, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  // Run the transactions via the model
+  tb_expected_tx_packet     = 8'd3;
+  execute_transactions(2);
+  check_outputs();
+
+  tb_test_data = '{32'd4}; 
+  enqueue_transaction(1'b1, 1'b1, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  enqueue_transaction(1'b1, 1'b0, 8'd12, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  // Run the transactions via the model
+  tb_expected_tx_packet     = 8'd4;
+  execute_transactions(2);
+  check_outputs();
   //*****************************************************************************
   // Test Case: R/W from Flush Register
   //*****************************************************************************
@@ -650,14 +683,15 @@ initial begin
 
   // Reset the DUT to isolate from prior test case
   reset_dut();
-
+  reset_model();
   // Enqueue the needed transactions
-  tb_test_data = '{32'd1000}; 
-  enqueue_transaction(1'b1, 1'b1, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd1);
-  enqueue_transaction(1'b1, 1'b0, 8'd128, tb_test_data, BURST_SINGLE, 1'b1, 2'd1);
+  tb_test_data = '{32'd1}; 
+  enqueue_transaction(1'b1, 1'b1, 8'd13, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
+  enqueue_transaction(1'b1, 1'b0, 8'd13, tb_test_data, BURST_SINGLE, 1'b0, 2'd1);
   
   // Run the transactions via the model
   execute_transactions(2);
+  check_outputs();
   $stop;
 end
 

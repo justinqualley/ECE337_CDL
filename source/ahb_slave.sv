@@ -9,11 +9,11 @@ module ahb_slave(
     output logic [31:0] hrdata,
     output logic hresp, hready,
     input logic [2:0] hburst,
-    input logic [7:0] buffer_occupancy,         //Data Buffer Signals
+    input logic [6:0] buffer_occupancy,         //Data Buffer Signals
     input logic tx_transfer_active, tx_error,
-    output logic store_tx_data, clear,
+    output logic store_tx_data, clear, dmode,
     output logic [7:0] tx_data,
-    output logic [1:0] tx_packet
+    output logic [2:0] tx_packet
 );
 //AHB Registers set up as 2D Array of Bytes
 reg [13:0][7:0] mem;
@@ -45,12 +45,12 @@ always_comb begin
         IDLE: begin                                                 
                 store_tx_data = 1'b0;
                 tx_data = '0;
-                tx_packet = '0;
+                //tx_packet = '0;
                 next_state = (prev_haddr inside {[0:3]} && hsel == 1'b1 && prev_hwrite == 1'b1) ? B0 : IDLE;    //FSM starts when any data address is written to
               end
         B0:   begin 
                 //hready = 1'b0;
-                tx_packet = 2'd3;
+                //tx_packet = 2'd3;
                 store_tx_data = 1'b1;                               //Signals we are storing data into the buffer
                 tx_data = mem[0];                                   //Put the least-significant byte first
                 next_state = (data_hsize > 2'd0) ? B1 : IDLE;            //Go to 2 byte transfer if size demands
@@ -82,7 +82,6 @@ always_comb begin
         hready = '1;
     end
 end
-
 //Address Mapping + Error Logic
 always_ff @ (negedge n_rst, posedge clk) begin
     if(1'b0 == n_rst) begin
@@ -103,28 +102,32 @@ always_ff @ (negedge n_rst, posedge clk) begin
         prev_hsel <= hsel;
     end
 end
-
 always_comb begin
-    hresp = '0;
-    //hready = 1'b1;
+    if(haddr inside {[4:8]} && hwrite == 1'b1) begin
+        hresp = 1'b1;
+    end else if(haddr > 13 || haddr < 0) begin
+        hresp = 1'b1;
+    end else begin
+        hresp = 1'b0;
+    end
+end
+always_comb begin
+    dmode = '0;
     hrdata = '0;
-    next_mem = mem;
-    //Registers
-    //next_mem[4] = '0;                                                   //Status Register
-    next_mem[5] = (tx_transfer_active == 1'b1) ? 8'b10 : mem[5];
-   // next_mem[6] = '0;
-    next_mem[7] = (tx_error == 1'b1) ? 8'b1 : mem[7];                             //Error Register
-    next_mem[12] = (tx_transfer_active == 1'b0) ? '0 : mem[12];         //TX Control Register
-    next_mem[13] = (buffer_occupancy == '0) ? '0 : mem[13];             //Flush Register
+    next_mem     = mem;
+    next_mem[5]  = (tx_transfer_active == 1'b1) ? 8'b10 : mem[5];        //Status Register
+    next_mem[7]  = (tx_error == 1'b1)           ? 8'b1  : mem[7];        //Error Register
+    next_mem[8]  = buffer_occupancy;
+    next_mem[12] = (tx_transfer_active == 1'b0) ? '0    : mem[12];       //TX Control Register //check if clearing to 0 works properly
+    next_mem[13] = (buffer_occupancy == '0)     ? '0    : mem[13];       //Flush Register
     //Outputs
     clear  = (mem[13] == 8'd1) ? 1'b1 : 1'b0; 
+    tx_packet = mem[12];
 
     if(hsel == 1'b1) begin												//Device Selected
-	    if(prev_hwrite == 1'b1 && prev_htrans == 2'd2) begin					//Write Operation htrans correct ???
-		    if(prev_haddr inside {[4:8]}) begin 					    //W to R only error
-			    hresp = 1;
-			    //hready = 0;
-            end else if(prev_haddr inside {[12:13]}) begin 	            //1 byte write
+        dmode = 1'b1;
+	    if(prev_hwrite == 1'b1 && prev_htrans == 2'd2) begin		    //Write Operation htrans correct ???
+		    if(prev_haddr inside {[12:13]}) begin 	                    //1 byte write
                 next_mem[prev_haddr] = hwdata[7:0];
             end else if(prev_haddr inside {[0:3]}) begin		        //4 byte write
                 case(prev_hsize)							            //Data Logic:
@@ -152,11 +155,8 @@ always_comb begin
                 end else begin										        //Write aligned
                     hrdata = {16'b0, mem[prev_haddr + 1], mem[prev_haddr]};
                 end
-            end else if(prev_haddr inside {[12:13]}) begin                  //1 byte read
+            end else if(prev_haddr inside {[12:13]} || prev_haddr == 4'd8) begin                  //1 byte read
                 hrdata = {24'b0, mem[prev_haddr]};
-            end else begin                                                  //Address out of range error
-                hresp = 1;
-                //hready = 0;
             end
         end
     end
