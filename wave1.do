@@ -36,11 +36,12 @@ add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/tx_transfer_active_trigger
 add wave -noupdate -color Orange /tb_ahb_tx_cdl/DUT/AHB/tx_transfer_active
 add wave -noupdate /tb_ahb_tx_cdl/DUT/AHB/prev_tx_transfer_active
 add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/ENC/end_packet
+add wave -noupdate /tb_ahb_tx_cdl/DUT/TX/rollover_flag
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {432360 ps} 0}
+WaveRestoreCursors {{Cursor 1} {453921 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 231
-configure wave -valuecolwidth 39
+configure wave -valuecolwidth 40
 configure wave -justifyvalue left
 configure wave -signalnamewidth 1
 configure wave -snapdistance 10
@@ -53,4 +54,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {189644 ps} {687284 ps}
+WaveRestoreZoom {231709 ps} {729349 ps}
