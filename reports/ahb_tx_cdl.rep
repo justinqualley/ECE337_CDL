@@ -1,0 +1,120 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : ahb_tx_cdl
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 12:57:16 2022
+****************************************
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: AHB/prev_haddr_reg[1]
+              (rising edge-triggered flip-flop)
+  Endpoint: hrdata[1] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  AHB/prev_haddr_reg[1]/CLK (DFFSR)        0.00       0.00 r
+  AHB/prev_haddr_reg[1]/Q (DFFSR)          1.11       1.11 r
+  AHB/U89/Y (INVX1)                        0.89       2.00 f
+  AHB/U87/Y (INVX2)                        0.34       2.34 r
+  AHB/U88/Y (INVX1)                        0.75       3.09 f
+  AHB/U565/Y (OAI21X1)                     0.33       3.42 r
+  AHB/U563/Y (OAI21X1)                     0.08       3.51 f
+  AHB/U562/Y (AND2X1)                      0.76       4.27 f
+  AHB/U529/Y (AOI22X1)                     0.23       4.49 r
+  AHB/U528/Y (OAI21X1)                     0.05       4.55 f
+  AHB/hrdata[1] (ahb_slave)                0.00       4.55 f
+  hrdata[1] (out)                          0.00       4.55 f
+  data arrival time                                   4.55
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+ 
+****************************************
+Report : area
+Design : ahb_tx_cdl
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 12:57:16 2022
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                          331
+Number of nets:                          3919
+Number of cells:                         3643
+Number of combinational cells:           2406
+Number of sequential cells:              1229
+Number of macros/black boxes:               0
+Number of buf/inv:                        771
+Number of references:                       3
+
+Combinational area:             661887.000000
+Buf/Inv area:                   115056.000000
+Noncombinational area:          970992.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:               1632879.000000
+Total area:                 undefined
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : ahb_tx_cdl
+Version: K-2015.06-SP1
+Date   : Thu Apr 28 12:57:17 2022
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+ahb_tx_cdl                                6.491   68.304  509.233   74.796 100.0
+  DB (data_buffer)                        0.204   53.995  420.506   54.199  72.5
+    r374 (data_buffer_DW01_incdec_0)   2.05e-04 9.58e-04    2.216 1.17e-03   0.0
+  USB (tx)                             1.80e-03    1.489   16.292    1.491   2.0
+    CL (control_logic)                 2.26e-04    0.410    3.757    0.410   0.5
+    ENC (encoder)                      4.12e-04    0.308    6.017    0.308   0.4
+    CORE (flex_pts_sr_NUM_BITS8_SHIFT_MSB0)
+                                       7.21e-04    0.130    0.826    0.131   0.2
+    counter (flex_counter)                0.000    0.512    4.893    0.512   0.7
+  AHB (ahb_slave)                         6.285   12.820   72.438   19.105  25.5
+1

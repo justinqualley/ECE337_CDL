@@ -41,7 +41,7 @@ ahb_slave AHB (.clk(clk), .n_rst(n_rst),                     //Standard CLK and 
                 .tx_data(tx_data),
                 .tx_packet(tx_packet));
 
-tx TX (.clk(clk), .n_rst(n_rst),
+tx USB (.clk(clk), .n_rst(n_rst),
         .tx_packet_data(tx_packet_data),
         .tx_packet(tx_packet),
         .buffer_occupancy(buffer_occupancy),

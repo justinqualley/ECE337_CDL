@@ -13,49 +13,229 @@ T_opt
 VNzcTTEVC^nR`CBfkkGF8H2
 04 12 4 work tb_ahb_slave fast 0
 =1-c81f66bd10e9-626ab625-745d6-23b4
-o-quiet -auto_acc_if_foreign -work mapped_work -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -suppress 12110 +acc
-tCvgOpt 0
+Z1 o-quiet -auto_acc_if_foreign -work mapped_work -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Course_Prod/IP_Libs/Lab_IP_Lib/Vsim -suppress 12110 +acc
+Z2 tCvgOpt 0
 n@_opt
-OE;O;10.7a;67
+Z3 OE;O;10.7a;67
+R0
+T_opt1
+!s110 1651165043
+V;@mMO1OM@^@Y?b6G<82Sl3
+04 13 4 work tb_ahb_tx_cdl fast 0
+=1-c81f66bd10e9-626ac773-30fed-3f61
+R1
+R2
+n@_opt1
+R3
 vahb_slave
-Z1 DXx6 sv_std 3 std 0 22 >9az<^>2ff9DAl3OFGaAf1
-!s110 1651160608
+Z4 DXx6 sv_std 3 std 0 22 >9az<^>2ff9DAl3OFGaAf1
+Z5 !s110 1651165038
 !i10b 1
-!s100 I_a_^49>9NLndFD]a9aFQ2
-IL]Q?N<cPJIJf`cIOoHo0P1
-Z2 VDg1SIo80bB@j0V0VzS_@n1
-!s105 ahb_slave_v_unit
+!s100 11GF__^?5Pk]L;T8cfzN50
+Ie6YF6ROYLlPN;T<SGXTbA1
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 !s105 ahb_tx_cdl_v_unit
 S1
 R0
-w1651160545
-8mapped/ahb_slave.v
-Fmapped/ahb_slave.v
+Z8 w1651165037
+Z9 8mapped/ahb_tx_cdl.v
+Z10 Fmapped/ahb_tx_cdl.v
 L0 8
-Z3 OE;L;10.7a;67
+Z11 OE;L;10.7a;67
 r1
 !s85 0
 31
-!s108 1651160608.000000
-!s107 mapped/ahb_slave.v|
-!s90 -sv|-work|mapped_work|mapped/ahb_slave.v|
+Z12 !s108 1651165038.000000
+Z13 !s107 mapped/ahb_tx_cdl.v|
+Z14 !s90 -sv|-work|mapped_work|mapped/ahb_tx_cdl.v|
 !i113 0
-Z4 o-sv -work mapped_work
-Z5 tCoverage 63 CoverExcludeDefault 1 CoverOpt 1 CoverShortCircuit 0 CvgOpt 0
+Z15 o-sv -work mapped_work
+Z16 tCoverage 63 CoverExcludeDefault 1 CoverOpt 1 CoverShortCircuit 0 CvgOpt 0
+vahb_tx_cdl
+R4
+Z17 !s110 1651165039
+!i10b 1
+!s100 XLRO:O2I]31A7HLCg2C5d2
+IQe^9[0C=7@<7zPJZj<Ma?2
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 4140
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
+vcontrol_logic
+R4
+R5
+!i10b 1
+!s100 BRKczA92c6B=j?DSW;;fe2
+IC:iV<Hdifd_PL10KD419X0
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 966
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
+vdata_buffer
+R4
+R17
+!i10b 1
+!s100 H166<>NLCFo8Q@^2no92<3
+IUIaPDjm3`fM4Zz=CaYNzK3
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 1065
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
+vdata_buffer_DW01_incdec_0
+R4
+R5
+!i10b 1
+!s100 A_;?8R3jYmJA6zF?QNG_;0
+IoXUm4=BQJ:Hg8`<WY>97n1
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 1044
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
+ndata_buffer_@d@w01_incdec_0
+vencoder
+R4
+R5
+!i10b 1
+!s100 47LjUFal=eNK^UQ`cAFDf1
+Ieif;J97m9_InC@B`g8EC=0
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 867
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
+vflex_counter
+R4
+R5
+!i10b 1
+!s100 ]a9?DLY2=4IO;iz;eH1Gb1
+In9Qk^K^Z7TT_R?K;S1[f52
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 794
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
+vflex_pts_sr_NUM_BITS8_SHIFT_MSB0
+R4
+R5
+!i10b 1
+!s100 KEj1?JTf]1iN@dLQcazgQ1
+I>SWY7nYhDTRW9Fe5gk?Bb0
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 850
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
+nflex_pts_sr_@n@u@m_@b@i@t@s8_@s@h@i@f@t_@m@s@b0
 vtb_ahb_slave
-R1
+R4
 !s110 1651160609
 !i10b 1
 !s100 XREIT8N`c8zREVhmko=h[0
 InLjQ@d[R8ekXz3EMC;iAC2
-R2
+R6
 !s105 tb_ahb_slave_sv_unit
 S1
 R0
 w1651103724
 8source/tb_ahb_slave.sv
 Fsource/tb_ahb_slave.sv
-L0 11
-R3
+Z18 L0 11
+R11
 r1
 !s85 0
 31
@@ -63,5 +243,53 @@ r1
 !s107 source/tb_ahb_slave.sv|
 !s90 -sv|-work|mapped_work|source/tb_ahb_slave.sv|
 !i113 0
+R15
+R16
+vtb_ahb_tx_cdl
+R4
+R17
+!i10b 1
+!s100 CD<2]g;X1NdZFn;9Ac48h0
+IBGA>DVnLNHjMW6NVdIXMk0
+R6
+!s105 tb_ahb_tx_cdl_sv_unit
+S1
+R0
+w1651164115
+8source/tb_ahb_tx_cdl.sv
+Fsource/tb_ahb_tx_cdl.sv
+R18
+R11
+r1
+!s85 0
+31
+!s108 1651165039.000000
+!s107 source/tb_ahb_tx_cdl.sv|
+!s90 -sv|-work|mapped_work|source/tb_ahb_tx_cdl.sv|
+!i113 0
+R15
+R16
+vtx
 R4
 R5
+!i10b 1
+!s100 G@EV07gF`:=4BZED31DAU3
+IcVTGAYWmC?HFY7I48W;1;1
+R6
+R7
+S1
+R0
+R8
+R9
+R10
+L0 1009
+R11
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R15
+R16
