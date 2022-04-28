@@ -28,20 +28,20 @@ module tx(
 
   // Should clear be tx_error?
   logic clear;
-  logic count;
+  logic [3:0] count;
   logic rollover_flag;
   flex_counter counter (
     .clk(clk),
     .n_rst(n_rst),
     .clear(clear),
     .count_enable(tx_transfer_active),
-    .rollover_val(8),
+    .rollover_val(4'd8),
     .count_out(count),
     .rollover_flag(rollover_flag)
   );
 
   flex_pts_sr #(
-    .NUM_BITS(4),
+    .NUM_BITS(8),
     .SHIFT_MSB(0)
   )
   CORE(
@@ -73,7 +73,7 @@ module tx(
   // ************************************************************
   // * ENCODER
   // ************************************************************
-  encoder (
+  encoder ENC (
     .clk(clk),
     .n_rst(n_rst),
     .begin_packet(begin_packet),
@@ -89,7 +89,7 @@ module tx(
   // ************************************************************
   // * CONTROL LOGIC
   // ************************************************************
-  control_logic (
+  control_logic CL (
     .clk(clk),
     .n_rst(n_rst),
     .tx_packet(tx_packet),
@@ -97,7 +97,8 @@ module tx(
     .tx_transfer_active(tx_transfer_active),
     .get_tx_packet_data(get_tx_packet_data),
     .begin_packet(begin_packet),
-    .tx_error(tx_error)
+    .tx_error(tx_error),
+    .buffer_occupancy(buffer_occupancy)
   );
 
 

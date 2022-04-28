@@ -14,6 +14,7 @@ module control_logic (
   input logic n_rst,
   input logic [2:0] tx_packet,
   input logic end_packet,
+  input logic [6:0] buffer_occupancy,
   output logic tx_transfer_active,
   output logic get_tx_packet_data,
   output logic begin_packet,

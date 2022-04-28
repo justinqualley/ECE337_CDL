@@ -38,7 +38,7 @@ ahb_slave AHB (.clk(clk), .n_rst(n_rst),                     //Standard CLK and 
                 .store_tx_data(store_tx_data), 
                 .clear(clear), 
                 .dmode(dmode),
-                .tx_data(tx_Data),
+                .tx_data(tx_data),
                 .tx_packet(tx_packet));
 
 tx TX (.clk(clk), .n_rst(n_rst),

@@ -112,7 +112,7 @@ always_comb begin
     end
 end
 always_comb begin
-    dmode = '0;
+    dmode = tx_transfer_active;
     hrdata = '0;
     next_mem     = mem;
     next_mem[5]  = (tx_transfer_active == 1'b1) ? 8'b10 : mem[5];        //Status Register
@@ -125,7 +125,6 @@ always_comb begin
     tx_packet = mem[12];
 
     if(hsel == 1'b1) begin												//Device Selected
-        dmode = 1'b1;
 	    if(prev_hwrite == 1'b1 && prev_htrans == 2'd2) begin		    //Write Operation htrans correct ???
 		    if(prev_haddr inside {[12:13]}) begin 	                    //1 byte write
                 next_mem[prev_haddr] = hwdata[7:0];

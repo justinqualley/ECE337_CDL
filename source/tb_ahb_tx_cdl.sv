@@ -275,27 +275,27 @@ begin
   tb_mismatch = 1'b0;
   tb_check    = 1'b1;
   if(tb_expected_dmode == tb_dmode) begin // Check passed
-    $info("Correct 'tx_data' output during %s test case", tb_test_case);
+    $info("Correct 'dmode' output during %s test case", tb_test_case);
   end
   else begin // Check failed
     tb_mismatch = 1'b1;
-    $error("Incorrect 'tx_data' output during %s test case", tb_test_case);
+    $error("Incorrect 'dmode' output during %s test case", tb_test_case);
   end
 
   if(tb_expected_dplus_out == tb_dplus_out) begin // Check passed
-    $info("Correct 'tx_packet' output during %s test case", tb_test_case);
+    $info("Correct 'dplus_out' output during %s test case", tb_test_case);
   end
   else begin // Check failed
     tb_mismatch = 1'b1;
-    $error("Incorrect 'tx_packet' output during %s test case", tb_test_case);
+    $error("Incorrect 'dplus_out' output during %s test case", tb_test_case);
   end
 
   if(tb_expected_dminus_out == tb_dminus_out) begin // Check passed
-    $info("Correct 'store_tx_data' output during %s test case", tb_test_case);
+    $info("Correct 'dminus_out' output during %s test case", tb_test_case);
   end
   else begin // Check failed
     tb_mismatch = 1'b1;
-    $error("Incorrect 'store_tx_data' output during %s test case", tb_test_case);
+    $error("Incorrect 'dminus_out' output during %s test case", tb_test_case);
   end
   // Wait some small amount of time so check pulse timing is visible on waves
   #(0.1);
@@ -344,7 +344,6 @@ initial begin
   tb_test_case_num = tb_test_case_num + 1;
   
   // Reset the DUT
-  init_buf_side();
   #(CLK_PERIOD);
   reset_dut();
 
@@ -363,12 +362,6 @@ initial begin
 
   // Enqueue the needed transactions
   enqueue_transaction(1'b1, 1'b1, 8'd0, '{8'd10}, BURST_SINGLE, 1'b0, 2'd0);
-  tb_expected_tx_data       = '{8'd10};
-  tb_expected_tx_packet     = 2'd3;
-  tb_expected_store_tx_data = 1'b1;
-  tb_expected_clear         = '0;
-  tb_expected_hready        = '0;
-  tb_expected_hresp         = '0;
   //Check for correct behavior
   execute_transactions(1);
   check_outputs();
@@ -383,16 +376,12 @@ initial begin
 
   // Enqueue the needed transactions
   enqueue_transaction(1'b1, 1'b1, 8'd1, '{8'd10}, BURST_SINGLE, 1'b0, 2'd0);
-  tb_expected_tx_data       = '{8'd10};
-  tb_expected_tx_packet     = '0;
-  tb_expected_store_tx_data = 1'b1;
-  tb_expected_clear         = '0;
-  tb_expected_hready        = '0;
-  tb_expected_hresp         = '0;
   //Check for correct behavior
   execute_transactions(1);
   check_outputs();
   #(CLK_PERIOD)
+  $stop;
+  /*
   //*****************************************************************************
   // Test Case: Write Transfer 2 Bytes
   //*****************************************************************************
@@ -636,7 +625,7 @@ initial begin
   // Run the transactions via the model
   execute_transactions(2);
   check_outputs();
-  $stop;
+  $stop;*/
 end
 
 endmodule

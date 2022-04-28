@@ -16,7 +16,7 @@ module encoder (
   input logic clk,
   input logic n_rst,
   input logic begin_packet,
-  input logic tx_packet,
+  input logic [2:0] tx_packet,
   input logic [7:0] tx_packet_data,
   input logic rollover_flag,
   input logic [6:0] buffer_occupancy,
